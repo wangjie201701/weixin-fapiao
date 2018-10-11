@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "电子发票验证系统",
+  "usingComponents": {
+    "wux-badge": "../../dist/badge/index",
+    "wux-icon": "../../dist/icon/index",
+    "wux-button": "../../dist/button/index",
+    "wux-wing-blank": "../../dist/wing-blank/index",
+    "wux-white-space": "../../dist/white-space/index"
+  }
+}

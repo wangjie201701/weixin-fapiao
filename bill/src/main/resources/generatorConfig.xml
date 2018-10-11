@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="bill-api">
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://118.24.157.212:3306/bill"
+                        userId="bill"
+                        password="1wangjie">
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和
+                    NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置 -->
+        <javaModelGenerator targetPackage="com.wangjie.bill.domain" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="false"/>
+            <property name="useActualColumnNames" value="false" />
+        </javaModelGenerator>
+        <!-- 生成的映射文件包名和位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="trimStrings" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wangjie.bill.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+<!--        <table tableName="bill_record" domainObjectName="BillRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <columnOverride column="currency_type"  javaType="Integer"/>
+        </table>-->
+                <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
+<!--        <table tableName="js_platform_account_cny_record" domainObjectName="JsPlatformAccountCnyRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <columnOverride column="trade_type"  javaType="Integer"/>
+            <columnOverride column="type"  javaType="Integer"/>
+            <columnOverride column="pay_type"  javaType="Integer"/>
+            <columnOverride column="is_del"  javaType="Integer"/>
+            <columnOverride column="status"  javaType="Integer"/>
+        </table>-->
+    <!--
+               <table tableName="js_user_reward_income" domainObjectName="JsUserRewardIncome" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                   <columnOverride column="currency_type"  javaType="Integer"/>
+               </table>
+               <table tableName="js_user_contract_income" domainObjectName="JsUserContractIncome" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                   <columnOverride column="currency_type"  javaType="Integer"/>
+               </table>
+               <table tableName="js_user_daily_income" domainObjectName="JsUserDailyIncome" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                   <columnOverride column="currency_type"  javaType="Integer"/>
+               </table>
+               <table tableName="js_platform_daily_income" domainObjectName="JsPlatformDailyIncome" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                   <columnOverride column="currency_type"  javaType="Integer"/>
+               </table>
+               <table tableName="js_platform_account_btc_record" domainObjectName="JsPlatformAccountBtcRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                   <columnOverride column="trade_type"  javaType="Integer"/>
+                   <columnOverride column="type"  javaType="Integer"/>
+                   <columnOverride column="pay_type"  javaType="Integer"/>
+                   <columnOverride column="is_del" javaType="Integer"/>
+                   <columnOverride column="status" javaType="Integer"/>
+
+               </table>
+
+               <table tableName="js_user" domainObjectName="JsUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                   <columnOverride column="status"  javaType="Integer"/>
+                   <columnOverride column="security_level"  javaType="Integer"/>
+                   <columnOverride column="source"  javaType="Integer"/>
+               </table>
+               <table tableName="js_user_reward" domainObjectName="JsUserReward" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                   <columnOverride column="type"  javaType="Integer"/>
+                   <columnOverride column="days"  javaType="Integer"/>
+                   <columnOverride column="currency_type"  javaType="Integer"/>
+               </table>
+               <table tableName="js_user_contract" domainObjectName="JsUserContract" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                   <columnOverride column="currency_type"  javaType="Integer"/>
+                   <columnOverride column="contract_type"  javaType="Integer"/>
+                   <columnOverride column="standard_period"  javaType="Integer"/>
+                   <columnOverride column="total_period"  javaType="Integer"/>
+                   <columnOverride column="gitf_period"  javaType="Integer"/>
+
+               </table>
+       -->
+<!--         
+        <table tableName="payment">
+            <columnOverride column="settle_type" javaType="Integer"/>
+            <columnOverride column="pay_status" javaType="Integer"/>
+        </table>
+         <table tableName="pay_transaction">
+            <columnOverride column="operate_type" javaType="Integer"/>
+            <columnOverride column="status" javaType="Integer"/>
+        </table>        
+        <table tableName="settle_info">
+            <columnOverride column="settle_type" javaType="Integer"/>
+            <columnOverride column="settle_circle" javaType="Integer"/>
+            <columnOverride column="merge_flag" javaType="Integer"/>
+        </table>
+        <table tableName="bill">
+            <columnOverride column="settle_status" javaType="Integer"/>
+        </table>
+        <table tableName="merchant">
+            <columnOverride column="merchant_type" javaType="Integer"/>
+        </table>
+        <table tableName="statement"/>
+        <table tableName="statement_diff">
+            <columnOverride column="diff_src" javaType="Integer"/>
+            <columnOverride column="diff_type" javaType="Integer"/>
+            <columnOverride column="diff_status" javaType="Integer"/>
+            <columnOverride column="solve_type" javaType="Integer"/>
+        </table>
+        <table tableName="settle_condition">
+            <columnOverride column="condition_type" javaType="Integer"/>
+            <columnOverride column="status" javaType="Integer"/>
+        </table> 
+        <table tableName="statement_category"/>
+
+        <table tableName="settle_entity">
+            <columnOverride column="entity_type" javaType="Integer"/>
+            <columnOverride column="separate_settle" javaType="Integer"/>
+            <columnOverride column="capital_collect" javaType="Integer"/>
+            <columnOverride column="capital_collect_type" javaType="Integer"/>
+            <columnOverride column="settle_circle" javaType="Integer"/>
+            <columnOverride column="avail_status" javaType="Integer"/>
+        </table>
+        <table tableName="settle_bill">
+            <columnOverride column="entity_type" javaType="Integer"/>
+            <columnOverride column="separate_settle" javaType="Integer"/>
+            <columnOverride column="capital_collect" javaType="Integer"/>
+            <columnOverride column="capital_collect_type" javaType="Integer"/>
+            <columnOverride column="settle_circle" javaType="Integer"/>
+            <columnOverride column="settle_status" javaType="Integer"/>
+            <columnOverride column="audit_status" javaType="Integer"/>
+            <columnOverride column="status" javaType="Integer"/>
+            <columnOverride column="status" javaType="Integer"/>
+        </table>
+        <table tableName="settle_bill_paychn">
+        </table>
+        <table tableName="settle_entity_bank_acc">
+            <columnOverride column="bank_account_type" javaType="Integer"/>
+            <columnOverride column="entity_type" javaType="Integer"/>
+        </table>
+
+        <table tableName="process_instance">
+            <columnOverride column="business_type" javaType="Integer"/>
+            <columnOverride column="process_status" javaType="Integer"/>
+            <columnOverride column="cur_auditor_type" javaType="Integer"/>
+        </table>
+
+        <table tableName="commission_deduction_detail">
+            <columnOverride column="commission_settle_type" javaType="Integer"/>
+            <columnOverride column="commission_bill_circle" javaType="Integer"/>
+            <columnOverride column="commission_bill_status" javaType="Integer"/>
+        </table>
+        -->
+    </context>
+</generatorConfiguration>

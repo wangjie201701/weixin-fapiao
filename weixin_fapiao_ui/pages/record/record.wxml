@@ -1,0 +1,55 @@
+<!--pages/record/record.wxml-->
+<view class="page-body">
+  <view class="page__bd page__bd_spacing">
+    <block wx:for="{{records}}" wx:for-item="record" wx:key="*this">
+      <form bindsubmit="maInput" bindreset="formReset">
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title">
+            <!-- 分割线 -->
+            <view class="divLine"></view>
+
+            <view class="weui-cell weui-cell_input">
+              <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>发票代码&emsp;</text>
+              <input disabled='disabled' class="weui-input" name='bill_code' value='{{record.billCode}}' maxlength="12" placeholder-style="color:#F76260" type="number" placeholder="请输入发票代码" />
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>发票号码&emsp;</text>
+              <input disabled='disabled' class="weui-input" name='bill_num' value='{{record.billNum}}' maxlength="8" placeholder-style="color:#F76260" type="number" placeholder="请输入发票号码" />
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>发票金额&emsp;</text>
+              <input disabled='disabled' class="weui-input" name='bill_amount' value='{{record.amount==""?0:record.amount}}元' maxlength="20" type="digit" placeholder="发票金额" />
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>开票日期&emsp;</text>
+              <input disabled='disabled' class="weui-input" name='bill_date' value='{{record.billDate == ""?" ":record.billDate}}' maxlength="8" type="number" placeholder="开票日期如20180108" />
+            </view>
+          </view>
+        </view>
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>发票录入日期&emsp;</text>
+              <input disabled='disabled' class="weui-input" name='bill_create_time' value='{{record.createTime}}' type="text" placeholder="发票录入日期时间" />
+            </view>
+          </view>
+        </view>
+        <button style='background-color:PeachPuff;' bindtap="deleteRecord" data-id='{{record.id}}' >
+            删除
+        </button>
+      </form>
+    </block>
+  </view>
+</view>

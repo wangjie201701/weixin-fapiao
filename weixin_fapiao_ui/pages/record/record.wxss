@@ -1,0 +1,12 @@
+/* pages/record/record.wxss */
+@import "../../lib/weui.wxss";
+
+.page-section{
+  margin-bottom: 20rpx;
+}
+.divLine{
+ background: #0000CD;
+ width: 100%;
+ margin-top: 5px;
+ height: 5rpx;
+}

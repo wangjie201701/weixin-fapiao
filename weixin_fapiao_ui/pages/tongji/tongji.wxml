@@ -1,0 +1,36 @@
+<!--pages/tongji/tongji.wxml-->
+
+
+<view class="section">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="flex-item bc_tubiao">
+      <canvas canvas-id="pieCanvas" class="canvas" style="height:500px" bindtouchstart="touchHandler"></canvas>
+    </view>
+  </view>
+  <label>
+   {{tongjiTitle}}<text decode="{{true}}" space="{{true}}"> </text> 自动扫描数量:
+    <text decode="{{true}}" space="{{true}}" class="label-1__text">{{autoAccount}}条  &emsp; </text> 手动录入数量:
+
+    <text class="label-1__text">{{muAcount}}条  </text>
+  </label>
+</view>
+
+<view class="section">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="flex-item bc_red" style='width:20%'>
+      <button type="primary" bindtap="tongji" data-id='1'>今天</button>
+    </view>
+    <view class="flex-item bc_red" style='width:20%'>
+      <button type="primary" bindtap="tongji" data-id='2'>昨天</button>
+    </view>
+    <view class="flex-item bc_red" style='width:20%'>
+      <button type="primary" bindtap="tongji" data-id='3'>本周</button>
+    </view>
+    <view class="flex-item bc_red" style='width:20%'>
+      <button type="primary" bindtap="tongji" data-id='4'>本月</button>
+    </view>
+    <view class="flex-item bc_red" style='width:20%'>
+      <button type="primary" bindtap="tongji" data-id='5'>本年</button>
+    </view>
+  </view>
+</view>

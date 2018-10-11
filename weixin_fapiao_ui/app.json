@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/add/add",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/query/query",
+    "pages/tongji/tongji",
+    "pages/record/record"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/add/add",
+        "text": "新增",
+        "iconPath": "images/ico-add.png",
+        "selectedIconPath": "images/ico-add-d.png"
+      },
+      {
+        "pagePath": "pages/query/query",
+        "text": "查询",
+        "iconPath": "images/ico-query.png",
+        "selectedIconPath": "images/ico-query-d.png"
+      },
+      {
+        "pagePath": "pages/tongji/tongji",
+        "text": "统计",
+        "iconPath": "images/ico-tongji.png",
+        "selectedIconPath": "images/ico-tongji-d.png"
+      }
+    ]
+  }
+}

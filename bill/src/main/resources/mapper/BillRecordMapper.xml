@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wangjie.bill.dao.BillRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.wangjie.bill.domain.BillRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="bill_code" property="billCode" jdbcType="VARCHAR" />
+    <result column="bill_num" property="billNum" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="VARCHAR" />
+    <result column="bill_date" property="billDate" jdbcType="VARCHAR" />
+   <result column="input_type" property="inputType" jdbcType="VARCHAR" />
+   <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bill_code, bill_num, amount, bill_date, input_type, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bill_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bill_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wangjie.bill.domain.BillRecord" >
+    insert into bill_record (id, bill_code, bill_num, 
+      amount, bill_date, input_type, create_time)
+    values (#{id,jdbcType=INTEGER}, #{billCode,jdbcType=VARCHAR}, #{billNum,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=VARCHAR},   #{billDate,jdbcType=VARCHAR}, #{inputType,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wangjie.bill.domain.BillRecord" >
+    insert into bill_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="billCode != null" >
+        bill_code,
+      </if>
+      <if test="billNum != null" >
+        bill_num,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="billDate != null" >
+        bill_date,
+      </if>
+      <if test="inputType != null" >
+          input_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="billCode != null" >
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billNum != null" >
+        #{billNum,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="billDate != null" >
+        #{billDate,jdbcType=VARCHAR},
+      </if>
+      <if test="inputType != null" >
+        #{inputType,jdbcType=VARCHAR},
+     </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wangjie.bill.domain.BillRecord" >
+    update bill_record
+    <set >
+      <if test="billCode != null" >
+        bill_code = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billNum != null" >
+        bill_num = #{billNum,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="billDate != null" >
+        bill_date = #{billDate,jdbcType=VARCHAR},
+      </if>
+      <if test="inputType != null" >
+          input_type = #{inputType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wangjie.bill.domain.BillRecord" >
+    update bill_record
+    set bill_code = #{billCode,jdbcType=VARCHAR},
+      bill_num = #{billNum,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      bill_date = #{billDate,jdbcType=VARCHAR},
+      input_type = #{inputType,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByCodeAndNum" resultMap="BaseResultMap" parameterType="com.wangjie.bill.domain.BillRecord" >
+  select
+  <include refid="Base_Column_List" />
+  from bill_record
+  where bill_code = #{billCode,jdbcType=VARCHAR} and bill_num = #{billNum,jdbcType=VARCHAR}
+  </select>
+
+  <select id="queryHistory" resultMap="BaseResultMap" parameterType="com.wangjie.bill.vo.BillRecordRequest">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM bill_record
+    <where>
+      <if test="billCode != null">
+        AND bill_code = #{billCode,jdbcType=VARCHAR}
+      </if>
+      <if test="billNum != null">
+        AND bill_num = #{billNum,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=VARCHAR}
+      </if>
+      <if test="billDate != null">
+        AND bill_date = #{billDate,jdbcType=VARCHAR}
+      </if>
+      <if test="inputType != null">
+        AND input_type = #{inputType,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY create_time desc
+    LIMIT #{beginIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+
+  <select id="queryHistoryCount" resultType="java.lang.Integer"  parameterType="com.wangjie.bill.vo.BillRecordRequest">
+    SELECT
+      count(1)
+    FROM bill_record
+    <where>
+      <if test="billCode != null">
+        AND bill_code = #{billCode,jdbcType=VARCHAR}
+      </if>
+      <if test="billNum != null">
+        AND bill_num = #{billNum,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=VARCHAR}
+      </if>
+      <if test="billDate != null">
+        AND bill_date = #{billDate,jdbcType=VARCHAR}
+      </if>
+      <if test="inputType != null">
+        AND input_type = #{inputType,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY create_time desc
+  </select>
+
+  <resultMap id="mapResultMap"   type="HashMap">
+    <result property="inputtype" column="inputtype" jdbcType="VARCHAR" javaType="java.lang.String" />
+    <result property="num" column="num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="statisticsInputType" resultMap="mapResultMap"  parameterType="com.wangjie.bill.vo.BillRecordRequest">
+    SELECT
+      input_type as inputtype, count(1) as num
+    FROM bill_record
+    <where>
+      <if test="billCode != null">
+        AND bill_code = #{billCode,jdbcType=VARCHAR}
+      </if>
+      <if test="billNum != null">
+        AND bill_num = #{billNum,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=VARCHAR}
+      </if>
+      <if test="billDate != null">
+        AND bill_date = #{billDate,jdbcType=VARCHAR}
+      </if>
+      <if test="inputType != null">
+        AND input_type = #{inputType,jdbcType=VARCHAR}
+      </if>
+      <if test="startTime != null">
+        AND create_time <![CDATA[>=]]> #{startTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endTime != null">
+        AND create_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    Group By input_type
+  </select>
+
+</mapper>

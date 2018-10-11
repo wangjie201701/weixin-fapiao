@@ -1,0 +1,51 @@
+<view class="page-body">
+  <view class="page__bd page__bd_spacing">
+    <form bindsubmit="maInput" bindreset="formReset">
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>发票代码&emsp;</text>
+            <input class="weui-input" name='bill_code' value='{{bill_code}}' maxlength="12" placeholder-style="color:#F76260" type="number" placeholder="输入10或12位数字" />
+          </view>
+        </view>
+      </view>
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>发票号码&emsp;</text>
+            <input class="weui-input" name='bill_num' value='{{bill_num}}' maxlength="8" placeholder-style="color:#F76260" type="number" placeholder="输入8位数字" />
+          </view>
+        </view>
+      </view>
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>发票金额&emsp;</text>
+            <input class="weui-input" name='bill_amount' value='{{bill_amount == ""?0:bill_amount}}元' maxlength="20" type="digit" placeholder="发票金额" />
+          </view>
+        </view>
+      </view>
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>发票日期&emsp;</text>
+            <input class="weui-input" name='bill_date' value='{{bill_date == ""?" ":bill_date}}' maxlength="8" type="number" placeholder="开票日期如20180108" />
+          </view>
+        </view>
+      </view>
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <text decode="{{true}}" space="{{true}}" style='white-space:nowrap;'>发票录入日期&emsp;</text>
+            <input class="weui-input" name='bill_create_time' value='{{bill_create_time}}' type="text" placeholder="发票录入日期时间" />
+          </view>
+        </view>
+      </view>
+      <button formType="submit" type="primary">手动查询</button>
+      <input></input>
+      <button formType="reset" type="primary">清空</button>
+      <input></input>
+      <button type="primary" bindtap="autoScanInput">扫描查询</button>
+    </form>
+  </view>
+</view>
